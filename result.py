@@ -95,19 +95,43 @@ if __name__ == '__main__':
     test_result = pd.concat(test_result, axis=1)
     test_result.columns = opt_list
 
+    # Allocation plot
     plt.figure(figsize=(10, 15))
     sns.heatmap(allocations, annot=True, fmt=".2%")
     plt.title('Allocation Comparison')
     plt.show()
 
+    # Train result plot
     plt.figure(figsize=(10, 10))
     train_result.plot(kind='barh')
     plt.title('Train Result Comparison')
     print(train_result)
     plt.show()
 
+    # Test result plot
     plt.figure(figsize=(10, 10))
     test_result.plot(kind='barh')
     plt.title('Test Result Comparison')
     print(test_result)
+    plt.show()
+
+    # Sharpe ratio by time in test set
+    date_list = [d.strftime('%Y-%m-%d')
+                 for d in pd.date_range('2015-02-01', '2019-09-30')]
+
+    sharpe_ratio = []
+    for d in date_list:
+        sharpe_ratio_tmp = []
+        for opt in opt_list:
+            # allow one month time for Sharpe Ratio to stabilize
+            price_df = df.loc['2015-01-01':d]
+            sharpe_ratio_tmp.append(Portfolio(price_df).portfolio_annualised_performance(
+                allocations[opt])['annual_sharpe'])
+
+        sharpe_ratio.append(sharpe_ratio_tmp)
+
+    sharpe_ratio = pd.DataFrame(sharpe_ratio, columns=opt_list)
+    sharpe_ratio.set_index(pd.DatetimeIndex(date_list), inplace=True)
+
+    sharpe_ratio.plot.line(figsize=(10, 7))
     plt.show()
