@@ -134,4 +134,6 @@ if __name__ == '__main__':
     sharpe_ratio.set_index(pd.DatetimeIndex(date_list), inplace=True)
 
     sharpe_ratio.plot.line(figsize=(10, 7))
+    plt.xlabel('Date')
+    plt.ylabel('Sharpe Ratio')
     plt.show()
