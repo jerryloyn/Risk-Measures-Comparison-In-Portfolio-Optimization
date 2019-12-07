@@ -7,7 +7,7 @@ In this study, we compare the performance (Sharpe Ratio) of 3 risk minimization 
 #### 1. Create a virtual environment in a directory
 
 ``` command
-python3 -m venv portfolioOptimization
+python -m venv portfolioOptimization
 ```
 
 #### 2. Activate the virtual environment
