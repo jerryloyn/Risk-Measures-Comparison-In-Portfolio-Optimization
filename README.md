@@ -2,24 +2,29 @@
 
 In this study, we compare the performance (Sharpe Ratio) of 3 risk minimization models: Minimax, Variance and Absolute Deviation. In-sample and Out-of-sample analysis are conducted using histoical HSI stocks data.
 
-## Setup
+## Setup (Windows only)
 
-#### 1. Create a virtual environment and activate it (Windows only)
+#### 1. Create a virtual environment in a directory
 
 ``` command
 python3 -m venv portfolioOptimization
+```
+
+#### 2. Activate the virtual environment
+
+``` command
 portfolioOptimization\Scripts\activate.bat
 ```
 
-#### 2. Put `result.py`, `portfolioOptimization.py` and `requirements.txt` in the same directory
+#### 3. Put `result.py`, `portfolioOptimization.py` and `requirements.txt` in the same directory
 
-#### 3. Install required packages
+#### 4. Install required packages
 
 ``` command
 pip install -r requirements.txt
 ```
 
-#### 4. Run the code
+#### 5. Run the code
 
 ``` command
 python result.py
